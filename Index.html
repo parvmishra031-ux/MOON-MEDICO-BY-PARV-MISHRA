@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOON MEDICO by PARV MISHRA</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: linear-gradient(135deg, #07111f, #263b5a);
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .owner {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      color: #dbeafe;
+    }
+
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      border: none;
+      padding: 11px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 15px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .hero {
+      background: white;
+      padding: 35px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 5px 25px #00000012;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px #0000000d;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .primary {
+      background: #172033;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 14px;
+      border: 1px solid #d8dee8;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .chat {
+      height: 380px;
+      overflow-y: auto;
+      background: #f8fafc;
+      padding: 15px;
+      border-radius: 14px;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      padding: 12px;
+      border-radius: 14px;
+      margin: 8px 0;
+      max-width: 85%;
+      line-height: 1.5;
+    }
+
+    .ai {
+      background: #e2e8f0;
+    }
+
+    .user {
+      background: #172033;
+      color: white;
+      margin-left: auto;
+    }
+
+    .result {
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .notice {
+      background: #fff7ed;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 30px;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">🌙 MOON MEDICO</div>
+
+  <div class="owner">
+    by PARV MISHRA
+  </div>
+
+  <div class="tagline">
+    NEET • College Predictor • Counselling • Medical AI
+  </div>
+
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('ai')">🤖 Ask MOON AI</button>
+    <button onclick="showPage('predictor')">🎯 College Predictor</button>
+    <button onclick="showPage('colleges')">🏥 Colleges</button>
+    <button onclick="showPage('counselling')">📋 Counselling</button>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- HOME -->
+
+  <section id="home" class="page active">
+
+    <div class="hero">
+
+      <h1>Welcome to MOON MEDICO 🌙</h1>
+
+      <p>
+        Your medical education assistant for NEET,
+        college prediction, counselling and medical career doubts.
+      </p>
+
+      <button class="primary" onclick="showPage('ai')">
+        Ask MOON AI
+      </button>
+
+    </div>
+
+
+    <div class="grid">
+
+      <div class="card">
+        <h2>🤖 MOON AI</h2>
+        <p>
+          Ask questions about NEET, MBBS,
+          colleges, counselling and medical careers.
+        </p>
+
+        <button class="primary" onclick="showPage('ai')">
+          Ask Question
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h2>🎯 College Predictor</h2>
+        <p>
+          Enter your All India Rank,
+          category, quota and state.
+        </p>
+
+        <button class="primary" onclick="showPage('predictor')">
+          Predict College
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h2>🏥 College Explorer</h2>
+        <p>
+          Search medical colleges and explore
+          their information.
+        </p>
+
+        <button class="primary" onclick="showPage('colleges')">
+          Explore Colleges
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h2>📋 Counselling Guide</h2>
+        <p>
+          Learn about registration,
+          documents, choice filling and reporting.
+        </p>
+
+        <button class="primary" onclick="showPage('counselling')">
+          Open Guide
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="notice">
+      <b>Important:</b>
+      Admission cutoffs, dates, fees and eligibility can change.
+      Always verify final admission information from the
+      official counselling authority.
+    </div>
+
+  </section>
+
+
+  <!-- AI -->
+
+  <section id="ai" class="page">
+
+    <div class="card">
+
+      <h1>🤖 Ask MOON AI</h1>
+
+      <br>
+
+      <div id="chatBox" class="chat">
+
+        <div class="message ai">
+          Namaste! 🌙 I am MOON AI.
+
+          Ask me anything about NEET,
+          MBBS colleges, counselling,
+          documents, choice filling
+          or medical careers.
+        </div>
+
+      </div>
+
+
+      <textarea
+        id="question"
+        rows="4"
+        placeholder="Type your question here..."
+      ></textarea>
+
+
+      <button class="primary" onclick="askAI()">
+        Send Question
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- PREDICTOR -->
+
+  <section id="predictor" class="page">
+
+    <div class="card">
+
+      <h1>🎯 NEET College Predictor</h1>
+
+      <br>
+
+      <label>All India Rank (AIR)</label>
+
+      <input
+        id="air"
+        type="number"
+        placeholder="Example: 15000"
+      >
+
+
+      <label>Category</label>
+
+      <select id="category">
+
+        <option>General</option>
+        <option>OBC</option>
+        <option>EWS</option>
+        <option>SC</option>
+        <option>ST</option>
+
+      </select>
+
+
+      <label>Quota</label>
+
+      <select id="quota">
+
+        <option>AIQ</option>
+        <option>State Quota</option>
+
+      </select>
+
+
+      <label>State</label>
+
+      <input
+        id="state"
+        placeholder="Example: Uttar Pradesh"
+      >
+
+
+      <button class="primary" onclick="predictCollege()">
+        Find My Colleges
+      </button>
+
+
+      <div id="predictionResult" class="result">
+
+        Enter your details and click
+        "Find My Colleges".
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COLLEGES -->
+
+  <section id="colleges" class="page">
+
+    <div class="card">
+
+      <h1>🏥 Medical College Explorer</h1>
+
+      <br>
+
+      <input
+        id="collegeSearch"
+        placeholder="Search college, city or state"
+      >
+
+      <button class="primary" onclick="searchCollege()">
+        Search
+      </button>
+
+
+      <div id="collegeResult" class="result">
+
+        Search for a medical college.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNSELLING -->
+
+  <section id="counselling" class="page">
+
+    <div class="card">
+
+      <h1>📋 NEET Counselling Assistant</h1>
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h2>1️⃣ Registration</h2>
+
+          <p>
+            Register on the appropriate official
+            counselling portal.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h2>2️⃣ Documents</h2>
+
+          <p>
+            Keep your NEET result/rank,
+            identity proof, photographs and
+            applicable category/domicile documents ready.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h2>3️⃣ Choice Filling</h2>
+
+          <p>
+            Arrange colleges according to
+            your genuine preferences and
+            verify eligibility and quota.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h2>4️⃣ Seat Allotment</h2>
+
+          <p>
+            Check your allotment result and
+            follow the reporting instructions.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="notice">
+
+        <b>Important:</b>
+        Counselling requirements can differ
+        according to year, state, category and
+        counselling authority.
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  🌙 MOON MEDICO<br>
+  <b>by PARV MISHRA</b><br><br>
+  NEET • Medical Education • Counselling
+
+</footer>
+
+
+<script>
+
+function showPage(pageId) {
+
+  const pages = document.querySelectorAll(".page");
+
+  pages.forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+
+  window.scrollTo(0, 0);
+
+}
+
+
+function askAI() {
+
+  const question =
+    document.getElementById("question").value.trim();
+
+  if (question === "") {
+    return;
+  }
+
+
+  const chat =
+    document.getElementById("chatBox");
+
+
+  const userMessage =
+    document.createElement("div");
+
+  userMessage.className =
+    "message user";
+
+  userMessage.textContent =
+    question;
+
+  chat.appendChild(userMessage);
+
+
+  document.getElementById("question").value = "";
+
+
+  const aiMessage =
+    document.createElement("div");
+
+  aiMessage.className =
+    "message ai";
+
+  aiMessage.textContent =
+    "Your question has been received. Real MOON AI will be connected to the secure backend in the next stage.";
+
+  chat.appendChild(aiMessage);
+
+
+  chat.scrollTop =
+    chat.scrollHeight;
+
+}
+
+
+function predictCollege() {
+
+  const air =
+    document.getElementById("air").value;
+
+  const category =
+    document.getElementById("category").value;
+
+  const quota =
+    document.getElementById("quota").value;
+
+  const state =
+    document.getElementById("state").value;
+
+
+  const result =
+    document.getElementById("predictionResult");
+
+
+  if (!air) {
+
+    result.innerHTML =
+      "<b>Please enter your AIR first.</b>";
+
+    return;
+
+  }
+
+
+  result.innerHTML =
+
+    "<b>Your details:</b><br><br>" +
+
+    "AIR: " + air + "<br>" +
+
+    "Category: " + category + "<br>" +
+
+    "Quota: " + quota + "<br>" +
+
+    "State: " + state +
+
+    "<br><br>" +
+
+    "The real prediction engine will compare your rank with verified round-wise cutoff data.";
+
+}
+
+
+function searchCollege() {
+
+  const search =
+    document.getElementById("collegeSearch").value.trim();
+
+
+  const result =
+    document.getElementById("collegeResult");
+
+
+  if (!search) {
+
+    result.innerHTML =
+      "Please enter a college, city or state.";
+
+    return;
+
+  }
+
+
+  result.innerHTML =
+
+    "<b>Searching for:</b> " +
+
+    search +
+
+    "<br><br>" +
+
+    "The complete college database will be connected in the backend stage.";
+
+}
+
+</script>
+
+</body>
+</html>
